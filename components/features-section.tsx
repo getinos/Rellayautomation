@@ -8,20 +8,20 @@ import { AnimatePresence, motion } from 'framer-motion'
 const features = [
   {
     icon: Zap,
-    title: 'Automation',
-    description: 'Complete home automation with intelligent controls, schedules, and seamless integration.',
+    title: 'Home Theatres',
+    description: 'Immersive cinematic experiences with calibrated audio, 4K/8K video, and seamless control.',
     backgroundImage: '/assets/accordion/accordion-1.jpeg',
   },
   {
     icon: Window,
-    title: 'Climate',
-    description: 'Smart climate control that adapts to weather, time, and your comfort preferences.',
+    title: 'Whole Home Audio',
+    description: 'Distribute crystal‑clear music to every room with intuitive multi‑room control.',
     backgroundImage: '/assets/accordion/accordion-2.jpeg',
   },
   {
     icon: Lightbulb,
-    title: 'Lighting',
-    description: 'Intelligent lighting automation with schedules, voice control, and smart sensors.',
+    title: 'Professional Audio',
+    description: 'Studio‑grade sound systems designed for performance, clarity, and impact.',
     backgroundImage: '/assets/accordion/accordion-3.jpeg',
   },
   {
@@ -73,14 +73,52 @@ export default function FeaturesSection({
   const parentFeature = features[features.length - 1]
   const parentIndex = features.length - 1
 
+  // First group: 3 square cards
+  const firstGroup = childFeatures.slice(0, 3)
+  // Second group: first 6 cards (3x2 grid)
+  const secondGroup = childFeatures.slice(0, 6)
+
   return (
     <section className="py-20 px-4 bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="relative">
-          {/* Top 3×2 grid of child cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
-            {childFeatures.map((feature, index) => (
+          {/* First group: 3 square cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 mb-6">
+            {firstGroup.map((feature, index) => (
               <div key={feature.title} className="aspect-[4/3]">
+                <FeatureCard
+                  icon={feature.icon}
+                  title={feature.title}
+                  description={feature.description}
+                  backgroundImage={feature.backgroundImage}
+                  delay={index * 0.08}
+                  variant="child"
+                  onClick={() => handleCardClick(index)}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Intermediate rectangle between first and second group */}
+          <div className="w-full mb-6">
+            <div className="w-full min-h-[160px] rounded-[24px] border border-slate-100 bg-gradient-to-r from-slate-50 via-slate-50 to-emerald-50/30 shadow-[0_12px_30px_rgba(15,23,42,0.06)] px-6 md:px-10 py-6 flex flex-col justify-center">
+              <p className="text-xs uppercase tracking-[0.22em] text-slate-500 mb-2">
+                Audio · Video · Experience
+              </p>
+              <h3 className="text-xl md:text-2xl font-semibold text-slate-900 mb-1">
+                AUDIO VIDEO SOLUTIONS
+              </h3>
+              <p className="text-sm md:text-base text-slate-600">
+                Home Theatres, Whole Home Audio, and Professional Audio combined into a single,
+                carefully engineered solution.
+              </p>
+            </div>
+          </div>
+
+          {/* Second group: 6 cards (3×2 grid) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
+            {secondGroup.map((feature, index) => (
+              <div key={`${feature.title}-second-${index}`} className="aspect-[4/3]">
                 <FeatureCard
                   icon={feature.icon}
                   title={feature.title}
