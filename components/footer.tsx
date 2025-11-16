@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Github, Linkedin, Twitter, Mail } from 'lucide-react'
 
 export default function Footer() {
@@ -10,11 +11,14 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center font-bold text-sm">
-                RA
-              </div>
-              <span className="font-bold text-lg">RelayAutomation</span>
+            <div className="flex items-center mb-4">
+              <Image
+                src="/assets/logo/logo.png"
+                alt="Relay Automation logo"
+                width={120}
+                height={36}
+                className="h-8 w-auto object-contain"
+              />
             </div>
             <p className="text-white/70 text-sm">
               Making homes smarter and safer with intelligent automation.
