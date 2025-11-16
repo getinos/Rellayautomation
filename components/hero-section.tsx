@@ -37,14 +37,6 @@ export default function HeroSection() {
         animate="visible"
         className="max-w-4xl mx-auto text-center"
       >
-        {/* Badge */}
-        <motion.div variants={itemVariants} className="mb-6">
-          <span className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold">
-            <Zap size={16} />
-            Smart Home Innovation
-          </span>
-        </motion.div>
-
         {/* Main Headline */}
         <motion.h1
           variants={itemVariants}
@@ -61,10 +53,10 @@ export default function HeroSection() {
           RelayAutomation brings intelligent lighting, window automation, and home control to your fingertips.
         </motion.p>
 
-        {/* CTA Buttons */}
+        {/* CTA Button */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="flex justify-center"
         >
           <Button
             size="lg"
@@ -73,29 +65,8 @@ export default function HeroSection() {
             Get Started
             <ArrowRight size={20} className="ml-2" />
           </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-primary text-primary hover:bg-primary/5 font-semibold text-base"
-          >
-            View Products
-          </Button>
         </motion.div>
 
-        {/* Floating illustration placeholder */}
-        <motion.div
-          variants={itemVariants}
-          className="mt-16 relative h-96 bg-gradient-to-br from-blue-100/50 to-primary/10 rounded-2xl border border-primary/20 flex items-center justify-center overflow-hidden glow-primary"
-        >
-          <motion.div
-            animate={{ y: [-20, 20] }}
-            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute inset-0 flex items-center justify-center"
-          >
-            <div className="text-6xl">🏠</div>
-          </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent" />
-        </motion.div>
       </motion.div>
     </section>
   )
