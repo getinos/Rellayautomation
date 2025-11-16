@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import FeatureCard from './feature-card'
 import { Lightbulb, AppWindow as Window, Lock, Zap, Smartphone, BarChart3, Home, ChevronDown } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -24,13 +25,13 @@ const topFeatures: FeatureItem[] = [
     icon: Window,
     title: 'Whole Home Audio',
     description: 'Multi-zone audio for synchronized home-wide listening.',
-    backgroundImage: '/assets/accordion/accordion-2.jpeg',
+    backgroundImage: '/assets/cards/whole home audio.jpeg',
   },
   {
     icon: Lightbulb,
     title: 'Professional Audio',
     description: 'Premium sound engineering for dynamic hospitality and event spaces.',
-    backgroundImage: '/assets/accordion/accordion-3.jpeg',
+    backgroundImage: '/assets/cards/professional audio.jpeg',
   },
 ]
 
@@ -126,14 +127,24 @@ export default function FeaturesSection({
 
           {/* Intermediate rectangle between first and second group */}
           <div className="w-full mb-6">
-            <div className="w-full min-h-[160px] border border-slate-100 bg-gradient-to-r from-slate-50 via-slate-50 to-emerald-50/30 shadow-[0_12px_30px_rgba(15,23,42,0.06)] px-6 md:px-10 py-6 flex flex-col items-end justify-end text-right">
-              <h3 className="text-xl md:text-2xl font-semibold text-slate-900 mb-1">
-                AUDIO VIDEO SOLUTIONS
-              </h3>
-              <p className="text-sm md:text-base text-slate-600 max-w-xl">
-                Home Theatres, Whole Home Audio, and Professional Audio combined into a single,
-                carefully engineered solution.
-              </p>
+            <div className="relative w-full min-h-[160px] border border-slate-100 shadow-[0_12px_30px_rgba(15,23,42,0.06)] overflow-hidden">
+              <div className="absolute inset-0 bg-slate-100">
+                <Image
+                  src="/assets/cards/audiovideosolutions.jpeg"
+                  alt="Audio Video Solutions"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div className="relative z-10 px-6 md:px-10 py-6 flex flex-col items-end justify-end text-right h-full">
+                <h3 className="text-xl md:text-2xl font-semibold text-white mb-1 drop-shadow-2xl">
+                  AUDIO VIDEO SOLUTIONS
+                </h3>
+                <p className="text-sm md:text-base text-white max-w-xl drop-shadow-xl">
+                  Home Theatres, Whole Home Audio, and Professional Audio combined into a single,
+                  carefully engineered solution.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -161,7 +172,7 @@ export default function FeaturesSection({
 
           {/* Bottom full-width parent card */}
           <div className="mt-2">
-            <div className="w-full min-h-[380px] lg:min-h-[460px]">
+            <div className="w-full min-h-[450px] lg:min-h-[600px]">
               <FeatureCard
                 icon={parentFeature.icon}
                 title={parentFeature.title}

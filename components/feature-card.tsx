@@ -43,22 +43,21 @@ export default function FeatureCard({
     >
       {/* Background image for both variants */}
       {backgroundImage && (
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-slate-100">
           <Image
             src={backgroundImage}
             alt={title}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-          {/* Overlay: slightly lighter for child, darker 'cloud' for parent */}
-          <div
-            className={[
-              'absolute inset-0',
+            className={
               isParent
-                ? 'bg-gradient-to-t from-black/75 via-black/55 to-transparent'
-                : 'bg-gradient-to-t from-black/70 via-black/50 to-transparent',
-            ].join(' ')}
+                ? "object-contain transition-transform duration-500 group-hover:scale-105"
+                : "object-cover transition-transform duration-500 group-hover:scale-105"
+            }
           />
+          {/* Overlay: only for child cards, none for parent */}
+          {!isParent && (
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent" />
+          )}
         </div>
       )}
 
@@ -75,7 +74,7 @@ export default function FeatureCard({
             className={[
               'font-extrabold mb-1 drop-shadow-2xl tracking-tight',
               isParent 
-                ? 'text-xl md:text-2xl text-slate-900' 
+                ? 'text-xl md:text-2xl text-white' 
                 : 'text-xl md:text-2xl text-white',
             ].join(' ')}
           >
@@ -85,7 +84,7 @@ export default function FeatureCard({
             className={[
               'leading-relaxed font-medium drop-shadow-xl',
               isParent 
-                ? 'text-xs md:text-sm text-slate-600' 
+                ? 'text-xs md:text-sm text-white' 
                 : 'text-xs md:text-sm text-white',
             ].join(' ')}
           >
