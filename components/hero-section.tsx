@@ -55,7 +55,7 @@ export default function HeroSection() {
       {/* Background image + gradient overlay */}
       <div className="absolute inset-0">
         <Image
-          src="/assets/heroImage.jpeg"
+          src="/assets/hero image 2.jpg"
           alt="Modern premium house exterior"
           fill
           priority
