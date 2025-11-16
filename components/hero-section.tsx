@@ -20,11 +20,20 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col min-h-screen pt-24 pb-16">
-        {/* Hero copy + tabs + filter panel */}
+        {/* Hero copy */}
         <div className="w-full max-w-6xl mx-auto px-4 flex-1 flex flex-col justify-center">
-          {/* Headline */}
-          <div className="text-center mb-10 md:mb-12">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 font-[family-name:var(--font-montserrat)] tracking-tight">
+          {/* Logo + Headline */}
+          <div className="text-center mb-10 md:mb-12 flex flex-col items-center gap-6">
+            <div className="relative w-32 h-24 md:w-48 md:h-32 lg:w-56 lg:h-36 mt-8 md:mt-12">
+              <Image
+                src="/assets/logo/relay_logo.png"
+                alt="Relay Automation logo large"
+                fill
+                className="object-contain drop-shadow-[0_18px_40px_rgba(0,0,0,0.6)]"
+                priority
+              />
+            </div>
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight font-[family-name:var(--font-montserrat)] tracking-tight">
               We don&apos;t just build houses
               <span className="block mt-1">we design better living</span>
             </h1>
