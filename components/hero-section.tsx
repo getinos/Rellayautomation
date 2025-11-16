@@ -1,12 +1,9 @@
 'use client'
 
-import { useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { ChevronDown, Building2, Home, Layers } from 'lucide-react'
-
-const categories = ['All', 'Houses', 'Villas', 'Cottages', 'Townhouses']
+import { Building2, Layers } from 'lucide-react'
 
 const projects = [
   {
@@ -44,12 +41,6 @@ const projects = [
 ]
 
 export default function HeroSection() {
-  const [activeCategory, setActiveCategory] = useState('Houses')
-  const [style, setStyle] = useState('Modern')
-  const [area, setArea] = useState('300–500 m²')
-  const [bedrooms, setBedrooms] = useState(3)
-  const [floors, setFloors] = useState(2)
-
   return (
     <section className="relative min-h-screen text-white">
       {/* Background image + gradient overlay */}
@@ -83,26 +74,6 @@ export default function HeroSection() {
             </p>
           </div>
 
-          {/* Category tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3 mb-8">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={[
-                  'px-4 py-2 rounded-full text-xs md:text-sm transition-all',
-                  'border border-white/15 backdrop-blur-md',
-                  activeCategory === category
-                    ? 'bg-white text-slate-900 shadow-lg shadow-black/30'
-                    : 'bg-white/5 text-white/80 hover:bg-white/10',
-                ].join(' ')}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-
-          {/* (Filter panel removed as requested) */}
         </div>
 
         {/* Project cards grid */}

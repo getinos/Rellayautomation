@@ -2,8 +2,14 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from '@/components/ui/dropdown-menu'
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -30,13 +36,35 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-white/80 hover:text-white transition-colors text-sm font-medium"
-              >
-                {link.label}
-              </Link>
+              <div key={link.href} className="flex items-center gap-8">
+                <Link
+                  href={link.href}
+                  className="text-white/80 hover:text-white transition-colors text-sm font-medium"
+                >
+                  {link.label}
+                </Link>
+
+                {link.label === 'Products' && (
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <button className="inline-flex items-center gap-1 text-white/80 hover:text-white text-sm font-medium">
+                        Category
+                        <ChevronDown className="w-4 h-4" />
+                      </button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="start">
+                      <DropdownMenuItem>Audio/Video</DropdownMenuItem>
+                      <DropdownMenuItem>Automation</DropdownMenuItem>
+                      <DropdownMenuItem>Climate</DropdownMenuItem>
+                      <DropdownMenuItem>Lighting</DropdownMenuItem>
+                      <DropdownMenuItem>Networking</DropdownMenuItem>
+                      <DropdownMenuItem>Shades</DropdownMenuItem>
+                      <DropdownMenuItem>Security</DropdownMenuItem>
+                      <DropdownMenuItem>Support</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                )}
+              </div>
             ))}
           </div>
 
