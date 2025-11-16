@@ -133,7 +133,7 @@ export default function FeaturesSection({
                   src="/assets/cards/audiovideosolutions.jpeg"
                   alt="Audio Video Solutions"
                   fill
-                  className="object-fill"
+                  className="object-cover"
                 />
               </div>
               <div className="relative z-10 px-6 md:px-10 py-6 flex flex-col items-end justify-end text-right h-full">
