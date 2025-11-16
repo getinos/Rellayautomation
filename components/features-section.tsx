@@ -50,7 +50,15 @@ const features = [
   },
 ]
 
-export default function FeaturesSection() {
+interface FeaturesSectionProps {
+  title?: string
+  subtitle?: string
+}
+
+export default function FeaturesSection({
+  title = 'Smart Home Categories',
+  subtitle = 'Explore how Automation, Climate, Lighting, Networking, Shades, and Security work together.',
+}: FeaturesSectionProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
 
   const activeFeature = activeIndex !== null ? features[activeIndex] : null

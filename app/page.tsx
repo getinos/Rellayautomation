@@ -10,6 +10,10 @@ export default function HomePage() {
       <Navbar />
       <HeroSection />
       <FeaturesSection />
+      <FeaturesSection
+        title="Smart Home Solutions"
+        subtitle="Smart Homes combines all these categories into a complete RelayAutomation experience."
+      />
       <DashboardPreview />
       <Footer />
     </main>
