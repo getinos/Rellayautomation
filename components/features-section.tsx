@@ -5,7 +5,15 @@ import FeatureCard from './feature-card'
 import { Lightbulb, AppWindow as Window, Lock, Zap, Smartphone, BarChart3, Home, ChevronDown } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 
-const features = [
+type FeatureItem = {
+  icon: any
+  title: string
+  description: string
+  backgroundImage?: string
+}
+
+// Top audio group (3 cards)
+const topFeatures: FeatureItem[] = [
   {
     icon: Zap,
     title: 'Home Theatres',
@@ -22,6 +30,28 @@ const features = [
     icon: Lightbulb,
     title: 'Professional Audio',
     description: 'Studio‑grade sound systems designed for performance, clarity, and impact.',
+    backgroundImage: '/assets/accordion/accordion-3.jpeg',
+  },
+]
+
+// Middle smart-home modules group (6 cards)
+const bottomFeatures: FeatureItem[] = [
+  {
+    icon: Zap,
+    title: 'Automation',
+    description: 'Complete home automation with intelligent controls, schedules, and seamless integration.',
+    backgroundImage: '/assets/accordion/accordion-1.jpeg',
+  },
+  {
+    icon: Window,
+    title: 'Climate',
+    description: 'Smart climate control that adapts to weather, time, and your comfort preferences.',
+    backgroundImage: '/assets/accordion/accordion-2.jpeg',
+  },
+  {
+    icon: Lightbulb,
+    title: 'Lighting',
+    description: 'Intelligent lighting automation with schedules, voice control, and smart sensors.',
     backgroundImage: '/assets/accordion/accordion-3.jpeg',
   },
   {
@@ -42,13 +72,13 @@ const features = [
     description: 'Advanced security systems with smart locks, cameras, and real-time monitoring.',
     backgroundImage: '/assets/accordion/accordion-6.jpeg',
   },
-  {
-    icon: Home,
-    title: 'Smart Homes',
-    description: 'Bring every device, room, and routine together in one beautifully simple experience.',
-    backgroundImage: '',
-  },
 ]
+
+const parentFeature: FeatureItem = {
+  icon: Home,
+  title: 'Smart Homes',
+  description: 'Parent Category — Includes Automation, Climate, Lighting, Networking, Shades, and Security.',
+}
 
 interface FeaturesSectionProps {
   title?: string
@@ -59,32 +89,21 @@ export default function FeaturesSection({
   title = 'Smart Home Categories',
   subtitle = 'Explore how Automation, Climate, Lighting, Networking, Shades, and Security work together.',
 }: FeaturesSectionProps) {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null)
+  const [activeFeature, setActiveFeature] = useState<FeatureItem | null>(null)
 
-  const activeFeature = activeIndex !== null ? features[activeIndex] : null
-
-  const handleCardClick = (index: number) => {
-    setActiveIndex((current) => (current === index ? null : index))
+  const handleCardClick = (feature: FeatureItem) => {
+    setActiveFeature((current) => (current?.title === feature.title ? null : feature))
   }
 
-  const handleClose = () => setActiveIndex(null)
-
-  const childFeatures = features.slice(0, features.length - 1)
-  const parentFeature = features[features.length - 1]
-  const parentIndex = features.length - 1
-
-  // First group: 3 square cards
-  const firstGroup = childFeatures.slice(0, 3)
-  // Second group: first 6 cards (3x2 grid)
-  const secondGroup = childFeatures.slice(0, 6)
+  const handleClose = () => setActiveFeature(null)
 
   return (
     <section className="py-20 px-4 bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="relative">
-          {/* First group: 3 square cards */}
+          {/* First group: 3 square cards (Audio/Video solutions) */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0 mb-6">
-            {firstGroup.map((feature, index) => (
+            {topFeatures.map((feature, index) => (
               <div key={feature.title} className="aspect-[4/3]">
                 <FeatureCard
                   icon={feature.icon}
@@ -93,7 +112,7 @@ export default function FeaturesSection({
                   backgroundImage={feature.backgroundImage}
                   delay={index * 0.08}
                   variant="child"
-                  onClick={() => handleCardClick(index)}
+                  onClick={() => handleCardClick(feature)}
                 />
               </div>
             ))}
@@ -117,7 +136,7 @@ export default function FeaturesSection({
 
           {/* Second group: 6 cards (3×2 grid) */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
-            {secondGroup.map((feature, index) => (
+            {bottomFeatures.map((feature, index) => (
               <div key={`${feature.title}-second-${index}`} className="aspect-[4/3]">
                 <FeatureCard
                   icon={feature.icon}
@@ -126,7 +145,7 @@ export default function FeaturesSection({
                   backgroundImage={feature.backgroundImage}
                   delay={index * 0.08}
                   variant="child"
-                  onClick={() => handleCardClick(index)}
+                  onClick={() => handleCardClick(feature)}
                 />
               </div>
             ))}
@@ -146,13 +165,13 @@ export default function FeaturesSection({
                 title={parentFeature.title}
                 description={parentFeature.description}
                 variant="parent"
-                delay={childFeatures.length * 0.08}
-                onClick={() => handleCardClick(parentIndex)}
+                delay={(topFeatures.length + bottomFeatures.length) * 0.08}
+                onClick={() => handleCardClick(parentFeature)}
               />
             </div>
           </div>
 
-          {/* Description panel overlay (still available, but now using lighter palette could be adjusted later) */}
+          {/* Description panel overlay */}
           <AnimatePresence>
             {activeFeature && (
               <>
@@ -180,7 +199,9 @@ export default function FeaturesSection({
                         <h3 className="text-lg md:text-xl font-semibold mb-2 text-slate-900">
                           {activeFeature.title}
                         </h3>
-                        <p className="text-sm md:text-base text-slate-600">{activeFeature.description}</p>
+                        <p className="text-sm md:text-base text-slate-600">
+                          {activeFeature.description}
+                        </p>
                       </div>
                       <button
                         type="button"
