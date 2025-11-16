@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Github, Linkedin, Twitter, Mail } from 'lucide-react'
+import { Facebook, Instagram, Mail } from 'lucide-react'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -29,38 +29,92 @@ export default function Footer() {
           <div>
             <h4 className="font-bold mb-4">Product</h4>
             <ul className="space-y-2 text-sm text-white/70">
-              <li><Link href="/products" className="hover:text-primary transition">Smart Lights</Link></li>
-              <li><Link href="/products" className="hover:text-primary transition">Smart Windows</Link></li>
-              <li><Link href="/products" className="hover:text-primary transition">Security</Link></li>
-              <li><Link href="/products" className="hover:text-primary transition">Energy</Link></li>
+              <li>
+                <Link href="/audio-video" className="hover:text-primary transition">
+                  Audio/Video
+                </Link>
+              </li>
+              <li>
+                <Link href="/automation" className="hover:text-primary transition">
+                  Automation
+                </Link>
+              </li>
+              <li>
+                <Link href="/climate" className="hover:text-primary transition">
+                  Climate
+                </Link>
+              </li>
+              <li>
+                <Link href="/lighting" className="hover:text-primary transition">
+                  Lighting
+                </Link>
+              </li>
+              <li>
+                <Link href="/networking" className="hover:text-primary transition">
+                  Networking
+                </Link>
+              </li>
+              <li>
+                <Link href="/shades" className="hover:text-primary transition">
+                  Shades
+                </Link>
+              </li>
+              <li>
+                <Link href="/security" className="hover:text-primary transition">
+                  Security
+                </Link>
+              </li>
+              <li>
+                <Link href="/support" className="hover:text-primary transition">
+                  Support
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Company */}
+          {/* Contact */}
           <div>
-            <h4 className="font-bold mb-4">Company</h4>
-            <ul className="space-y-2 text-sm text-white/70">
-              <li><Link href="/about" className="hover:text-primary transition">About</Link></li>
-              <li><Link href="/contact" className="hover:text-primary transition">Contact</Link></li>
-              <li><Link href="#" className="hover:text-primary transition">Blog</Link></li>
-              <li><Link href="#" className="hover:text-primary transition">Careers</Link></li>
-            </ul>
+            <h4 className="font-bold mb-4">Contact Us</h4>
+            <div className="space-y-1 text-sm text-white/80">
+              <p className="text-white/70">Phone</p>
+              <a
+                href="tel:+917070154040"
+                className="text-base font-semibold text-white hover:text-primary transition"
+              >
+                +91 7070-15-4040
+              </a>
+            </div>
           </div>
 
           {/* Social */}
           <div>
             <h4 className="font-bold mb-4">Follow Us</h4>
             <div className="flex gap-3">
-              <a href="#" className="w-10 h-10 bg-primary/20 hover:bg-primary/40 rounded-lg flex items-center justify-center text-primary transition">
-                <Twitter size={18} />
+              <a
+                href="https://www.facebook.com/share/1AT6vxysR4/"
+                className="w-10 h-10 bg-primary/20 hover:bg-primary/40 rounded-lg flex items-center justify-center text-primary transition"
+                aria-label="Facebook"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <Facebook size={18} />
               </a>
-              <a href="#" className="w-10 h-10 bg-primary/20 hover:bg-primary/40 rounded-lg flex items-center justify-center text-primary transition">
-                <Linkedin size={18} />
+              <a
+                href="https://www.instagram.com/relay_automation?igsh=anIxbnM1bTR5Y2gz"
+                className="w-10 h-10 bg-primary/20 hover:bg-primary/40 rounded-lg flex items-center justify-center text-primary transition"
+                aria-label="Instagram"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <Instagram size={18} />
               </a>
-              <a href="#" className="w-10 h-10 bg-primary/20 hover:bg-primary/40 rounded-lg flex items-center justify-center text-primary transition">
-                <Github size={18} />
-              </a>
-              <a href="#" className="w-10 h-10 bg-primary/20 hover:bg-primary/40 rounded-lg flex items-center justify-center text-primary transition">
+              <a
+                href="mailto:shubham@relayautomation.co.in"
+                className="w-10 h-10 bg-primary/20 hover:bg-primary/40 rounded-lg flex items-center justify-center text-primary transition"
+                aria-label="Email"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
                 <Mail size={18} />
               </a>
             </div>
