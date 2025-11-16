@@ -11,36 +11,43 @@ const features = [
     title: 'Smart Lighting Automation',
     description:
       'Automate your lights with schedules, voice control, and smart sensors for the perfect ambiance.',
+    backgroundImage: '/assets/accordion/accordion-1.jpeg',
   },
   {
     icon: Window,
     title: 'Auto Window Closing',
     description: 'Intelligent window automation that responds to weather, time, and your preferences.',
+    backgroundImage: '/assets/accordion/accordion-2.jpeg',
   },
   {
     icon: Lock,
     title: 'Door & Curtain Automation',
     description: 'Secure your home with automated locks and curtains that work on your schedule.',
+    backgroundImage: '/assets/accordion/accordion-3.jpeg',
   },
   {
     icon: Zap,
     title: 'Energy Saving AI',
     description: 'Reduce energy consumption with intelligent optimization and real-time monitoring.',
+    backgroundImage: '/assets/accordion/accordion-4.jpeg',
   },
   {
     icon: Smartphone,
     title: 'Mobile & Web Remote Control',
     description: 'Control your entire home from anywhere with our intuitive mobile and web apps.',
+    backgroundImage: '/assets/accordion/accordion-5.jpeg',
   },
   {
     icon: BarChart3,
     title: 'Energy Monitoring',
     description: 'Track and analyze your home energy usage with detailed analytics and insights.',
+    backgroundImage: '/assets/accordion/accordion-6.jpeg',
   },
   {
     icon: Home,
     title: 'Whole Home Automation Suite',
     description: 'Bring every device, room, and routine together in one beautifully simple experience.',
+    backgroundImage: '/assets/accordion/accordion-1.jpeg',
   },
 ]
 
@@ -58,15 +65,6 @@ export default function FeaturesSection() {
   return (
     <section className="py-20 px-4 bg-white">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Powerful Features for Your Smart Home
-          </h2>
-          <p className="text-foreground/70 max-w-2xl mx-auto text-lg">
-            Everything you need to automate, control, and optimize your home.
-          </p>
-        </div>
-
         <div className="relative">
           {/* Grid layout: 3 cards, 3 cards, 1 centered card on large screens */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
@@ -83,6 +81,7 @@ export default function FeaturesSection() {
                   icon={feature.icon}
                   title={feature.title}
                   description={feature.description}
+                  backgroundImage={feature.backgroundImage}
                   delay={index * 0.1}
                   onClick={() => handleCardClick(index)}
                 />

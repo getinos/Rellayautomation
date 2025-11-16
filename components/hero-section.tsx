@@ -24,11 +24,11 @@ export default function HeroSection() {
         <div className="w-full max-w-6xl mx-auto px-4 flex-1 flex flex-col justify-center">
           {/* Headline */}
           <div className="text-center mb-10 md:mb-12">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-semibold md:font-bold leading-tight mb-4">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 font-[family-name:var(--font-montserrat)] tracking-tight">
               We don&apos;t just build houses
               <span className="block mt-1">we design better living</span>
             </h1>
-            <p className="max-w-2xl mx-auto text-sm md:text-base text-white/70 mb-6">
+            <p className="max-w-2xl mx-auto text-base md:text-lg text-white mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] font-[family-name:var(--font-raleway)] font-medium tracking-wide">
               Signature architecture, natural materials, and thoughtful work with the landscape
               for those who value silence, light, and space.
             </p>
