@@ -41,8 +41,8 @@ export default function FeatureCard({
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}
     >
-      {/* Child card image background */}
-      {!isParent && backgroundImage && (
+      {/* Background image for both variants */}
+      {backgroundImage && (
         <div className="absolute inset-0">
           <Image
             src={backgroundImage}
@@ -50,8 +50,15 @@ export default function FeatureCard({
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
-          {/* Dark gradient overlay for better text visibility */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
+          {/* Overlay: slightly lighter for child, darker 'cloud' for parent */}
+          <div
+            className={[
+              'absolute inset-0',
+              isParent
+                ? 'bg-gradient-to-t from-black/75 via-black/55 to-transparent'
+                : 'bg-gradient-to-t from-black/70 via-black/50 to-transparent',
+            ].join(' ')}
+          />
         </div>
       )}
 

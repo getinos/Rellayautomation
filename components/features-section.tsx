@@ -18,7 +18,7 @@ const topFeatures: FeatureItem[] = [
     icon: Zap,
     title: 'Home Theatres',
     description: 'Immersive cinema-quality audio-visual orchestration at home.',
-    backgroundImage: '/assets/accordion/accordion-1.jpeg',
+    backgroundImage: '/assets/cards/hometheater.jpeg',
   },
   {
     icon: Window,
@@ -40,7 +40,7 @@ const bottomFeatures: FeatureItem[] = [
     icon: Zap,
     title: 'Automation',
     description: 'Seamless controls elevating comfort, efficiency, and system interoperability.',
-    backgroundImage: '/assets/accordion/accordion-1.jpeg',
+    backgroundImage: '/assets/cards/Automation.jpeg',
   },
   {
     icon: Window,
@@ -52,25 +52,25 @@ const bottomFeatures: FeatureItem[] = [
     icon: Lightbulb,
     title: 'Lighting',
     description: 'Smart lighting creating ambiance, depth, and spatial harmony.',
-    backgroundImage: '/assets/accordion/accordion-3.jpeg',
+    backgroundImage: '/assets/cards/lighting.jpeg',
   },
   {
     icon: Smartphone,
     title: 'Networking',
     description: 'Robust infrastructure powering seamless digital ecosystems.',
-    backgroundImage: '/assets/accordion/accordion-4.jpeg',
+    backgroundImage: '/assets/cards/networkings.jpeg',
   },
   {
     icon: Lock,
     title: 'Shades',
     description: 'Automated shades for precise light and privacy control.',
-    backgroundImage: '/assets/accordion/accordion-5.jpeg',
+    backgroundImage: '/assets/cards/Shades.avif',
   },
   {
     icon: Lock,
     title: 'Security',
     description: 'Integrated security solutions for continuous peace of mind.',
-    backgroundImage: '/assets/accordion/accordion-6.jpeg',
+    backgroundImage: '/assets/cards/Security.jpeg',
   },
 ]
 
@@ -78,6 +78,7 @@ const parentFeature: FeatureItem = {
   icon: Home,
   title: 'Smart Homes',
   description: 'Parent Category — Includes Automation, Climate, Lighting, Networking, Shades, and Security.',
+  backgroundImage: '/assets/cards/smarthomes.jpeg',
 }
 
 interface FeaturesSectionProps {
@@ -126,9 +127,6 @@ export default function FeaturesSection({
           {/* Intermediate rectangle between first and second group */}
           <div className="w-full mb-6">
             <div className="w-full min-h-[160px] border border-slate-100 bg-gradient-to-r from-slate-50 via-slate-50 to-emerald-50/30 shadow-[0_12px_30px_rgba(15,23,42,0.06)] px-6 md:px-10 py-6 flex flex-col items-end justify-end text-right">
-              <p className="text-xs uppercase tracking-[0.22em] text-slate-500 mb-2">
-                Audio · Video · Experience
-              </p>
               <h3 className="text-xl md:text-2xl font-semibold text-slate-900 mb-1">
                 AUDIO VIDEO SOLUTIONS
               </h3>
@@ -163,11 +161,12 @@ export default function FeaturesSection({
 
           {/* Bottom full-width parent card */}
           <div className="mt-2">
-            <div className="w-full min-h-[220px] lg:min-h-[260px]">
+            <div className="w-full min-h-[380px] lg:min-h-[460px]">
               <FeatureCard
                 icon={parentFeature.icon}
                 title={parentFeature.title}
                 description={parentFeature.description}
+                backgroundImage={parentFeature.backgroundImage}
                 variant="parent"
                 delay={(topFeatures.length + bottomFeatures.length) * 0.08}
                 onClick={() => handleCardClick(parentFeature)}
