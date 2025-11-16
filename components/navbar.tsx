@@ -2,8 +2,14 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from '@/components/ui/dropdown-menu'
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -14,6 +20,43 @@ const navLinks = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+
+  const desktopNavItems = navLinks.flatMap((link) => {
+    const items = [
+      <Link
+        key={link.href}
+        href={link.href}
+        className="text-foreground hover:text-primary transition-colors text-sm font-medium"
+      >
+        {link.label}
+      </Link>,
+    ]
+
+    if (link.label === 'Products') {
+      items.push(
+        <DropdownMenu key="category-dropdown">
+          <DropdownMenuTrigger asChild>
+            <button className="inline-flex items-center gap-1 text-foreground hover:text-primary text-sm font-medium">
+              Category
+              <ChevronDown className="w-4 h-4" />
+            </button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="start">
+            <DropdownMenuItem>Audio/Video</DropdownMenuItem>
+            <DropdownMenuItem>Automation</DropdownMenuItem>
+            <DropdownMenuItem>Climate</DropdownMenuItem>
+            <DropdownMenuItem>Lighting</DropdownMenuItem>
+            <DropdownMenuItem>Networking</DropdownMenuItem>
+            <DropdownMenuItem>Shades</DropdownMenuItem>
+            <DropdownMenuItem>Security</DropdownMenuItem>
+            <DropdownMenuItem>Support</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>,
+      )
+    }
+
+    return items
+  })
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-lg border-b border-primary/10">
@@ -28,23 +71,13 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-foreground hover:text-primary transition-colors text-sm font-medium"
-              >
-                {link.label}
-              </Link>
-            ))}
+          <div className="hidden md:flex items-center gap-6">
+            {desktopNavItems}
           </div>
 
           {/* CTA Button */}
           <div className="hidden md:flex gap-2">
-            <Button
-              className="bg-primary text-secondary hover:bg-primary/90 font-semibold glow-primary-hover"
-            >
+            <Button className="bg-primary text-secondary hover:bg-primary/90 font-semibold glow-primary-hover">
               Get Started
             </Button>
           </div>
