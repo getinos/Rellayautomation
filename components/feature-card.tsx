@@ -32,10 +32,10 @@ export default function FeatureCard({
       transition={{ duration: 0.5, delay }}
       viewport={{ once: true }}
       className={[
-        'relative h-full overflow-hidden transition-all duration-300 cursor-pointer',
+        'relative h-full overflow-hidden transition-all duration-300 cursor-pointer group',
         isParent
-          ? 'rounded-[24px] bg-gradient-to-r from-slate-50 via-emerald-50/30 to-slate-50 shadow-[0_18px_40px_rgba(15,23,42,0.08)] border border-slate-100'
-          : 'rounded-2xl border border-slate-200 bg-white/80 hover:border-slate-300',
+          ? 'bg-gradient-to-r from-slate-50 via-emerald-50/30 to-slate-50 shadow-[0_18px_40px_rgba(15,23,42,0.08)] border border-slate-100'
+          : 'border border-slate-200 bg-white/80 hover:border-slate-300',
       ].join(' ')}
       onClick={onClick}
       role={onClick ? 'button' : undefined}
@@ -48,10 +48,10 @@ export default function FeatureCard({
             src={backgroundImage}
             alt={title}
             fill
-            className="object-cover transition-transform duration-500"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
-          {/* light wash to keep text readable while staying in light theme */}
-          <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/60 to-white/30" />
+          {/* Dark gradient overlay for better text visibility */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
         </div>
       )}
 
@@ -60,7 +60,7 @@ export default function FeatureCard({
           'relative z-10 h-full w-full flex flex-col',
           isParent
             ? 'px-6 md:px-10 py-8 md:py-10 justify-center text-left'
-            : 'px-4 md:px-5 py-4 md:py-5 justify-between text-left',
+            : 'px-6 md:px-8 py-6 md:py-8 justify-end items-end text-right',
         ].join(' ')}
       >
         {isParent && (
@@ -72,16 +72,20 @@ export default function FeatureCard({
         <div>
           <h3
             className={[
-              'font-semibold text-slate-900 mb-2',
-              isParent ? 'text-2xl md:text-3xl' : 'text-base md:text-lg',
+              'font-extrabold mb-1 drop-shadow-2xl tracking-tight',
+              isParent 
+                ? 'text-xl md:text-2xl text-slate-900' 
+                : 'text-xl md:text-2xl text-white',
             ].join(' ')}
           >
             {title}
           </h3>
           <p
             className={[
-              'text-slate-600 leading-relaxed',
-              isParent ? 'text-sm md:text-base' : 'text-xs md:text-sm',
+              'leading-relaxed font-medium drop-shadow-xl',
+              isParent 
+                ? 'text-xs md:text-sm text-slate-600' 
+                : 'text-xs md:text-sm text-white',
             ].join(' ')}
           >
             {description}

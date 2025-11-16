@@ -7,46 +7,45 @@ import { AnimatePresence, motion } from 'framer-motion'
 
 const features = [
   {
-    icon: Lightbulb,
-    title: 'Smart Lighting Automation',
-    description:
-      'Automate your lights with schedules, voice control, and smart sensors for the perfect ambiance.',
+    icon: Zap,
+    title: 'Automation',
+    description: 'Complete home automation with intelligent controls, schedules, and seamless integration.',
     backgroundImage: '/assets/accordion/accordion-1.jpeg',
   },
   {
     icon: Window,
-    title: 'Auto Window Closing',
-    description: 'Intelligent window automation that responds to weather, time, and your preferences.',
+    title: 'Climate',
+    description: 'Smart climate control that adapts to weather, time, and your comfort preferences.',
     backgroundImage: '/assets/accordion/accordion-2.jpeg',
   },
   {
-    icon: Lock,
-    title: 'Door & Curtain Automation',
-    description: 'Secure your home with automated locks and curtains that work on your schedule.',
+    icon: Lightbulb,
+    title: 'Lighting',
+    description: 'Intelligent lighting automation with schedules, voice control, and smart sensors.',
     backgroundImage: '/assets/accordion/accordion-3.jpeg',
   },
   {
-    icon: Zap,
-    title: 'Energy Saving AI',
-    description: 'Reduce energy consumption with intelligent optimization and real-time monitoring.',
+    icon: Smartphone,
+    title: 'Networking',
+    description: 'Robust home network infrastructure for seamless connectivity across all devices.',
     backgroundImage: '/assets/accordion/accordion-4.jpeg',
   },
   {
-    icon: Smartphone,
-    title: 'Mobile & Web Remote Control',
-    description: 'Control your entire home from anywhere with our intuitive mobile and web apps.',
+    icon: Lock,
+    title: 'Shades',
+    description: 'Automated window shades that respond to sunlight, temperature, and your schedule.',
     backgroundImage: '/assets/accordion/accordion-5.jpeg',
   },
   {
-    icon: BarChart3,
-    title: 'Energy Monitoring',
-    description: 'Track and analyze your home energy usage with detailed analytics and insights.',
+    icon: Lock,
+    title: 'Security',
+    description: 'Advanced security systems with smart locks, cameras, and real-time monitoring.',
     backgroundImage: '/assets/accordion/accordion-6.jpeg',
   },
   {
     icon: Home,
-    title: 'Whole Home Automation Suite',
-    description: 'Parent Category — Includes all modules above.',
+    title: 'Smart Homes',
+    description: 'Bring every device, room, and routine together in one beautifully simple experience.',
     backgroundImage: '',
   },
 ]
@@ -71,7 +70,7 @@ export default function FeaturesSection() {
       <div className="max-w-6xl mx-auto">
         <div className="relative">
           {/* Top 3×2 grid of child cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
             {childFeatures.map((feature, index) => (
               <div key={feature.title} className="aspect-[4/3]">
                 <FeatureCard
