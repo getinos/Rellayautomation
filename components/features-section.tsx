@@ -128,12 +128,12 @@ export default function FeaturesSection({
           {/* Intermediate rectangle between first and second group */}
           <div className="w-full mb-6">
             <div className="relative w-full min-h-[160px] border border-slate-100 shadow-[0_12px_30px_rgba(15,23,42,0.06)] overflow-hidden">
-              <div className="absolute inset-0 bg-slate-100">
+              <div className="absolute inset-0">
                 <Image
                   src="/assets/cards/audiovideosolutions.jpeg"
                   alt="Audio Video Solutions"
                   fill
-                  className="object-contain"
+                  className="object-fill"
                 />
               </div>
               <div className="relative z-10 px-6 md:px-10 py-6 flex flex-col items-end justify-end text-right h-full">
@@ -172,7 +172,7 @@ export default function FeaturesSection({
 
           {/* Bottom full-width parent card */}
           <div className="mt-2">
-            <div className="w-full min-h-[450px] lg:min-h-[600px]">
+            <div className="w-full min-h-[280px] lg:min-h-[140px]">
               <FeatureCard
                 icon={parentFeature.icon}
                 title={parentFeature.title}
@@ -182,6 +182,18 @@ export default function FeaturesSection({
                 delay={(topFeatures.length + bottomFeatures.length) * 0.08}
                 onClick={() => handleCardClick(parentFeature)}
               />
+            </div>
+          </div>
+
+          {/* Peace of Mind Section */}
+          <div className="mt-6">
+            <div className="w-full min-h-[200px] border border-slate-100 bg-gradient-to-r from-slate-50 via-slate-50 to-emerald-50/30 shadow-[0_12px_30px_rgba(15,23,42,0.06)] px-6 md:px-10 py-8 flex flex-col items-center justify-center text-center">
+              <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
+                Relay Peace Of Mind Policy
+              </h3>
+              <p className="text-base md:text-lg text-slate-600 max-w-4xl">
+                At Relay Automation, our exclusive Peace of Mind Program champions an elevated ownership experience—completely avoiding traditional AMC fees. We meticulously curate and install only premium, maintenance-free systems designed for flawless, enduring performance without hidden service contracts. Your investment enjoys unparalleled reliability and sophistication, giving you true freedom from ongoing upkeep and unexpected costs.
+              </p>
             </div>
           </div>
 

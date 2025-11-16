@@ -50,7 +50,7 @@ export default function FeatureCard({
             fill
             className={
               isParent
-                ? "object-contain transition-transform duration-500 group-hover:scale-105"
+                ? "object-fill transition-transform duration-500 group-hover:scale-105"
                 : "object-cover transition-transform duration-500 group-hover:scale-105"
             }
           />
