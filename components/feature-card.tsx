@@ -59,16 +59,10 @@ export default function FeatureCard({
         className={[
           'relative z-10 h-full w-full flex flex-col',
           isParent
-            ? 'px-6 md:px-10 py-8 md:py-10 justify-center text-left'
+            ? 'px-6 md:px-10 py-8 md:py-10 justify-end items-end text-right'
             : 'px-6 md:px-8 py-6 md:py-8 justify-end items-end text-right',
         ].join(' ')}
       >
-        {isParent && (
-          <p className="text-xs uppercase tracking-[0.22em] text-slate-500 mb-3">
-            Parent Category
-          </p>
-        )}
-
         <div>
           <h3
             className={[

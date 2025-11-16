@@ -17,19 +17,19 @@ const topFeatures: FeatureItem[] = [
   {
     icon: Zap,
     title: 'Home Theatres',
-    description: 'Immersive cinematic experiences with calibrated audio, 4K/8K video, and seamless control.',
+    description: 'Immersive cinema-quality audio-visual orchestration at home.',
     backgroundImage: '/assets/accordion/accordion-1.jpeg',
   },
   {
     icon: Window,
     title: 'Whole Home Audio',
-    description: 'Distribute crystal‑clear music to every room with intuitive multi‑room control.',
+    description: 'Multi-zone audio for synchronized home-wide listening.',
     backgroundImage: '/assets/accordion/accordion-2.jpeg',
   },
   {
     icon: Lightbulb,
     title: 'Professional Audio',
-    description: 'Studio‑grade sound systems designed for performance, clarity, and impact.',
+    description: 'Premium sound engineering for dynamic hospitality and event spaces.',
     backgroundImage: '/assets/accordion/accordion-3.jpeg',
   },
 ]
@@ -39,37 +39,37 @@ const bottomFeatures: FeatureItem[] = [
   {
     icon: Zap,
     title: 'Automation',
-    description: 'Complete home automation with intelligent controls, schedules, and seamless integration.',
+    description: 'Seamless controls elevating comfort, efficiency, and system interoperability.',
     backgroundImage: '/assets/accordion/accordion-1.jpeg',
   },
   {
     icon: Window,
     title: 'Climate',
-    description: 'Smart climate control that adapts to weather, time, and your comfort preferences.',
+    description: 'Dynamic climate systems for seamless temperature mastery.',
     backgroundImage: '/assets/accordion/accordion-2.jpeg',
   },
   {
     icon: Lightbulb,
     title: 'Lighting',
-    description: 'Intelligent lighting automation with schedules, voice control, and smart sensors.',
+    description: 'Smart lighting creating ambiance, depth, and spatial harmony.',
     backgroundImage: '/assets/accordion/accordion-3.jpeg',
   },
   {
     icon: Smartphone,
     title: 'Networking',
-    description: 'Robust home network infrastructure for seamless connectivity across all devices.',
+    description: 'Robust infrastructure powering seamless digital ecosystems.',
     backgroundImage: '/assets/accordion/accordion-4.jpeg',
   },
   {
     icon: Lock,
     title: 'Shades',
-    description: 'Automated window shades that respond to sunlight, temperature, and your schedule.',
+    description: 'Automated shades for precise light and privacy control.',
     backgroundImage: '/assets/accordion/accordion-5.jpeg',
   },
   {
     icon: Lock,
     title: 'Security',
-    description: 'Advanced security systems with smart locks, cameras, and real-time monitoring.',
+    description: 'Integrated security solutions for continuous peace of mind.',
     backgroundImage: '/assets/accordion/accordion-6.jpeg',
   },
 ]
@@ -102,7 +102,7 @@ export default function FeaturesSection({
       <div className="max-w-6xl mx-auto">
         <div className="relative">
           {/* First group: 3 square cards (Audio/Video solutions) */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 mb-4">
             {topFeatures.map((feature, index) => (
               <div key={feature.title} className="aspect-[4/3]">
                 <FeatureCard
@@ -118,16 +118,21 @@ export default function FeaturesSection({
             ))}
           </div>
 
+          {/* Visual flow indicator between first group and AUDIO VIDEO SOLUTIONS rectangle */}
+          <div className="flex items-center justify-center mb-4 text-slate-400">
+            <ChevronDown className="h-5 w-5" />
+          </div>
+
           {/* Intermediate rectangle between first and second group */}
           <div className="w-full mb-6">
-            <div className="w-full min-h-[160px] rounded-[24px] border border-slate-100 bg-gradient-to-r from-slate-50 via-slate-50 to-emerald-50/30 shadow-[0_12px_30px_rgba(15,23,42,0.06)] px-6 md:px-10 py-6 flex flex-col justify-center">
+            <div className="w-full min-h-[160px] border border-slate-100 bg-gradient-to-r from-slate-50 via-slate-50 to-emerald-50/30 shadow-[0_12px_30px_rgba(15,23,42,0.06)] px-6 md:px-10 py-6 flex flex-col items-end justify-end text-right">
               <p className="text-xs uppercase tracking-[0.22em] text-slate-500 mb-2">
                 Audio · Video · Experience
               </p>
               <h3 className="text-xl md:text-2xl font-semibold text-slate-900 mb-1">
                 AUDIO VIDEO SOLUTIONS
               </h3>
-              <p className="text-sm md:text-base text-slate-600">
+              <p className="text-sm md:text-base text-slate-600 max-w-xl">
                 Home Theatres, Whole Home Audio, and Professional Audio combined into a single,
                 carefully engineered solution.
               </p>
@@ -151,10 +156,9 @@ export default function FeaturesSection({
             ))}
           </div>
 
-          {/* Visual flow indicator to parent card */}
-          <div className="flex items-center justify-center mt-6 mb-2 gap-2 text-slate-400">
-            <span className="text-xs uppercase tracking-[0.22em]">All modules below</span>
-            <ChevronDown className="h-4 w-4" />
+          {/* Visual flow indicator to parent card (icon only) */}
+          <div className="flex items-center justify-center mt-6 mb-2 text-slate-400">
+            <ChevronDown className="h-5 w-5" />
           </div>
 
           {/* Bottom full-width parent card */}
