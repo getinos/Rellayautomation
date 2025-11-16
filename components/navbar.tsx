@@ -12,10 +12,14 @@ import {
 } from '@/components/ui/dropdown-menu'
 
 const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'Products', href: '/products' },
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Audio/Video', href: '/audio-video' },
+  { label: 'Automation', href: '/automation' },
+  { label: 'Climate', href: '/climate' },
+  { label: 'Lighting', href: '/lighting' },
+  { label: 'Networking', href: '/networking' },
+  { label: 'Shades', href: '/shades' },
+  { label: 'Security', href: '/security' },
+  { label: 'Support', href: '/support' },
 ]
 
 export default function Navbar() {
