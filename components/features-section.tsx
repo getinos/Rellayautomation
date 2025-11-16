@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import FeatureCard from './feature-card'
-import { Lightbulb, AppWindow as Window, Lock, Zap, Smartphone, BarChart3, Home } from 'lucide-react'
+import { Lightbulb, AppWindow as Window, Lock, Zap, Smartphone, BarChart3, Home, ChevronDown } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 
 const features = [
@@ -46,8 +46,8 @@ const features = [
   {
     icon: Home,
     title: 'Whole Home Automation Suite',
-    description: 'Bring every device, room, and routine together in one beautifully simple experience.',
-    backgroundImage: '/assets/accordion/accordion-1.jpeg',
+    description: 'Parent Category — Includes all modules above.',
+    backgroundImage: '',
   },
 ]
 
@@ -62,34 +62,52 @@ export default function FeaturesSection() {
 
   const handleClose = () => setActiveIndex(null)
 
+  const childFeatures = features.slice(0, features.length - 1)
+  const parentFeature = features[features.length - 1]
+  const parentIndex = features.length - 1
+
   return (
     <section className="py-20 px-4 bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="relative">
-          {/* Grid layout: 3 cards, 3 cards, 1 centered card on large screens */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
-            {features.map((feature, index) => (
-              <div
-                key={feature.title}
-                className={
-                  index === features.length - 1
-                    ? 'w-full h-40 md:h-48 lg:h-56 lg:col-span-3'
-                    : 'aspect-square'
-                }
-              >
+          {/* Top 3×2 grid of child cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {childFeatures.map((feature, index) => (
+              <div key={feature.title} className="aspect-[4/3]">
                 <FeatureCard
                   icon={feature.icon}
                   title={feature.title}
                   description={feature.description}
                   backgroundImage={feature.backgroundImage}
-                  delay={index * 0.1}
+                  delay={index * 0.08}
+                  variant="child"
                   onClick={() => handleCardClick(index)}
                 />
               </div>
             ))}
           </div>
 
-          {/* Description panel overlay (blue card) */}
+          {/* Visual flow indicator to parent card */}
+          <div className="flex items-center justify-center mt-6 mb-2 gap-2 text-slate-400">
+            <span className="text-xs uppercase tracking-[0.22em]">All modules below</span>
+            <ChevronDown className="h-4 w-4" />
+          </div>
+
+          {/* Bottom full-width parent card */}
+          <div className="mt-2">
+            <div className="w-full min-h-[220px] lg:min-h-[260px]">
+              <FeatureCard
+                icon={parentFeature.icon}
+                title={parentFeature.title}
+                description={parentFeature.description}
+                variant="parent"
+                delay={childFeatures.length * 0.08}
+                onClick={() => handleCardClick(parentIndex)}
+              />
+            </div>
+          </div>
+
+          {/* Description panel overlay (still available, but now using lighter palette could be adjusted later) */}
           <AnimatePresence>
             {activeFeature && (
               <>
@@ -97,7 +115,7 @@ export default function FeaturesSection() {
                 <motion.button
                   type="button"
                   aria-label="Close feature details"
-                  className="fixed inset-0 z-30 cursor-default bg-black/10"
+                  className="fixed inset-0 z-30 cursor-default bg-slate-900/5"
                   onClick={handleClose}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -111,20 +129,18 @@ export default function FeaturesSection() {
                   transition={{ duration: 0.25, ease: 'easeOut' }}
                   className="pointer-events-auto fixed left-1/2 top-1/2 z-40 w-full max-w-2xl -translate-x-1/2 -translate-y-1/2 px-4"
                 >
-                  <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-600 text-white shadow-2xl shadow-indigo-900/40 px-6 py-5 md:px-8 md:py-6">
+                  <div className="bg-white/95 border border-slate-200 rounded-2xl shadow-xl shadow-slate-200 px-6 py-5 md:px-8 md:py-6">
                     <div className="flex items-start justify-between gap-4">
                       <div>
-                        <h3 className="text-lg md:text-xl font-semibold mb-2">
+                        <h3 className="text-lg md:text-xl font-semibold mb-2 text-slate-900">
                           {activeFeature.title}
                         </h3>
-                        <p className="text-sm md:text-base text-indigo-50/90">
-                          {activeFeature.description}
-                        </p>
+                        <p className="text-sm md:text-base text-slate-600">{activeFeature.description}</p>
                       </div>
                       <button
                         type="button"
                         onClick={handleClose}
-                        className="ml-2 inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/15 text-white/80 hover:bg-white/25 hover:text-white transition-colors text-sm font-semibold"
+                        className="ml-2 inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-slate-700 transition-colors text-sm font-semibold"
                       >
                         ✕
                       </button>
