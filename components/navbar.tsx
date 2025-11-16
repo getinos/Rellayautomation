@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
@@ -26,15 +27,19 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-gradient-to-b from-black/70 via-black/40 to-transparent backdrop-blur-md">
+    <nav className="fixed top-0 w-full z-50 bg-secondary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center text-white font-bold text-sm border border-white/30">
-              RA
-            </div>
-            <span className="font-bold text-white hidden sm:inline">RelayAutomation</span>
+            <Image
+              src="/assets/logo/logo.png"
+              alt="Relay Automation logo"
+              width={80}
+              height={24}
+              className="h-6 w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -92,7 +97,7 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden pb-4 border-t border-white/20 bg-black/80 backdrop-blur-xl">
+          <div className="md:hidden pb-4 border-t border-white/20 bg-secondary backdrop-blur-xl">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
