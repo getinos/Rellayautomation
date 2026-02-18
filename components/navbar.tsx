@@ -1,42 +1,94 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Menu, X } from 'lucide-react'
+import Image from 'next/image'
+import { Menu, X, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from '@/components/ui/dropdown-menu'
 
 const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'Products', href: '/products' },
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Audio/Video', href: '/audio-video' },
+  { label: 'Automation', href: '/automation' },
+  { label: 'Climate', href: '/climate' },
+  { label: 'Lighting', href: '/lighting' },
+  { label: 'Networking', href: '/networking' },
+  { label: 'Shades', href: '/shades' },
+  { label: 'Security', href: '/security' },
+  { label: 'Support', href: '/support' },
 ]
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Change navbar style after scrolling past hero (roughly 100vh)
+      setIsScrolled(window.scrollY > window.innerHeight - 100)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-gradient-to-b from-black/70 via-black/40 to-transparent backdrop-blur-md">
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      isScrolled 
+        ? 'bg-secondary' 
+        : 'bg-gradient-to-b from-black/70 via-black/40 to-transparent backdrop-blur-md'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center text-white font-bold text-sm border border-white/30">
-              RA
-            </div>
-            <span className="font-bold text-white hidden sm:inline">RelayAutomation</span>
+            <Image
+              src="/assets/logo/logo.png"
+              alt="Relay Automation logo"
+              width={80}
+              height={24}
+              className="h-6 w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-white/80 hover:text-white transition-colors text-sm font-medium"
-              >
-                {link.label}
-              </Link>
+              <div key={link.href} className="flex items-center gap-8">
+                <Link
+                  href={link.href}
+                  className="text-white/80 hover:text-white transition-colors text-sm font-medium"
+                >
+                  {link.label}
+                </Link>
+
+                {link.label === 'Products' && (
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <button className="inline-flex items-center gap-1 text-white/80 hover:text-white text-sm font-medium">
+                        Category
+                        <ChevronDown className="w-4 h-4" />
+                      </button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="start">
+                      <DropdownMenuItem>Audio/Video</DropdownMenuItem>
+                      <DropdownMenuItem>Automation</DropdownMenuItem>
+                      <DropdownMenuItem>Climate</DropdownMenuItem>
+                      <DropdownMenuItem>Lighting</DropdownMenuItem>
+                      <DropdownMenuItem>Networking</DropdownMenuItem>
+                      <DropdownMenuItem>Shades</DropdownMenuItem>
+                      <DropdownMenuItem>Security</DropdownMenuItem>
+                      <DropdownMenuItem>Support</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                )}
+              </div>
             ))}
           </div>
 
@@ -60,7 +112,7 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden pb-4 border-t border-white/20 bg-black/80 backdrop-blur-xl">
+          <div className="md:hidden pb-4 border-t border-white/20 bg-secondary backdrop-blur-xl">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
